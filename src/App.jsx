@@ -1,11 +1,13 @@
+import { GlobalStyle } from "../Globalstyle";
+import Router from "./routes/Router";
 
 function App() {
-
   return (
     <>
-      <h1>Labeddit</h1>
+      <GlobalStyle />
+      <Router />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
