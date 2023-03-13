@@ -4,11 +4,13 @@ import logo from "../../assets/logo.svg";
 import { LoginPageStyled } from "./LoginPageStyled";
 import { BASE_URL } from "../../constants/url";
 import { GlobalContext } from "../../contexts/GlobalContext";
+import { useNavigate } from "react-router-dom";
+import { goToSignupPage } from "../../routes/coordinator";
 
 export default function LoginPage() {
   const context = useContext(GlobalContext);
 
-  console.log(context.context);
+  const navigate = useNavigate();
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -59,7 +61,7 @@ export default function LoginPage() {
         <section>
           <button className="button-color" onClick={login}>Continuar</button>
           <hr />
-          <button onClick={() => goToSignuPage(navigate)}>Crie uma conta!</button>
+          <button onClick={() => goToSignupPage(navigate)}>Crie uma conta!</button>
         </section>
       </LoginPageStyled>
     </>
