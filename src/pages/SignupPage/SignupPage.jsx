@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-
+import { goToPostsPage } from "../../routes/coordinator";
 import { SignupPageStyled } from "./SignupPageStyled";
 import { GlobalContext } from "../../contexts/GlobalContext";
 import { useNavigate } from "react-router-dom";
@@ -22,7 +22,7 @@ export default function SignupPage() {
 
   useEffect(() => {
     if (context.context.isAuth) {
-      // goToHomePage(navigate);
+      goToPostsPage(navigate);
     }
   }, [context.isAuth, navigate]);
 
@@ -47,7 +47,7 @@ export default function SignupPage() {
       setIsLoading(false);
       context.context.setIsAuth(true);
 
-      // goToHomePage(navigate);
+      goToPostsPage(navigate);
     } catch (error) {
       console.log(error);
       setIsLoading(false);
@@ -57,14 +57,32 @@ export default function SignupPage() {
   return (
     <>
       <SignupPageStyled>
-        <Navbar/>
+        <Navbar />
         <section>
           <h1>Olá, boas vindas ao LabEddit ;)</h1>
         </section>
         <section className="container-inputs">
-          <input type="text" placeholder="Nome" name="name" value={form.name} onChange={onChangeForm} />
-          <input type="email" placeholder="E-mail" name="email" value={form.email} onChange={onChangeForm} />
-          <input type="password" placeholder="Senha" name="password" value={form.password} onChange={onChangeForm} />
+          <input
+            type="text"
+            placeholder="Nome"
+            name="name"
+            value={form.name}
+            onChange={onChangeForm}
+          />
+          <input
+            type="email"
+            placeholder="E-mail"
+            name="email"
+            value={form.email}
+            onChange={onChangeForm}
+          />
+          <input
+            type="password"
+            placeholder="Senha"
+            name="password"
+            value={form.password}
+            onChange={onChangeForm}
+          />
         </section>
         <section>
           <section>
@@ -81,7 +99,9 @@ export default function SignupPage() {
               </label>
             </section>
           </section>
-          <button className="button-color" onClick={signup}>Cadastrar</button>
+          <button className="button-color" onClick={signup}>
+            Cadastrar
+          </button>
         </section>
       </SignupPageStyled>
     </>
