@@ -12,6 +12,7 @@ export default function PostsPage() {
   const context = useContext(GlobalContext);
   const params = useParams();
   const [posts, setPosts] = useState([]);
+  const [content, setContent] = useState("");
   const navigate = useNavigate();
 
   // useEffect(() => {
@@ -35,7 +36,30 @@ export default function PostsPage() {
       setPosts(response.data);
     } catch (error) {
       console.log(error?.response?.data);
-      window.alert(error?.response?.data?.message)
+      window.alert(error?.response?.data?.message);
+    }
+  };
+
+  const createPost = async () => {
+    try {
+      const body = {
+        content: content,
+      };
+      const config = {
+        headers: {
+          Authorization: window.localStorage.getItem("labeddit-token"),
+        },
+      };
+      const response = await axios.post(
+        `${BASE_URL}/posts/create`,
+        body,
+        config
+      );
+      setPosts(response.data);
+      fetchPosts();
+    } catch (error) {
+      console.log(error?.response?.data);
+      window.alert(error?.response?.data?.message);
     }
   };
 
@@ -45,15 +69,24 @@ export default function PostsPage() {
       <PostsPageStyled>
         <section className="container-input">
           <div className="input">
-            <input type="text" placeholder="Escreva seu post..." />
+            <input
+              type="text"
+              placeholder="Escreva seu post..."
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+            />
           </div>
-          <button type="submit">Postar</button>
+          <button type="submit" onClick={createPost}>
+            Postar
+          </button>
         </section>
         <hr />
         <section className="container-posts">
-          {posts.map((post) => {
-            return <Post key={post.id} post={post}/>;
-          })}
+          {posts
+            .map((post) => {
+              return <Post key={post.id} post={post} />;
+            })
+            .reverse()}
         </section>
       </PostsPageStyled>
     </>
