@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const PostsPageStyled = styled.div`
   padding: 0 25px;
+  margin-top: 70px;
 
   .container-input {
     display: flex;

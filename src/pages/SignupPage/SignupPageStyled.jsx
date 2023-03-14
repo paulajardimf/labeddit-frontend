@@ -7,28 +7,6 @@ export const SignupPageStyled = styled.main`
   align-items: center;
   justify-content: space-around;
 
-  div {
-    background-color: #EDEDED;
-    width: 100vw;
-    height: 50px;
-    display: flex;
-    position: absolute;
-    top: 0;
-    align-items: center;
-  }
-
-  img {
-    width: 28px;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  a {
-    color: #4088CB;
-    font-weight: 500;
-  }
-
   .login{
     position: absolute;
     right: 50px;
