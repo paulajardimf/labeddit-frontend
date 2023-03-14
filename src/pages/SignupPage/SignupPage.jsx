@@ -1,10 +1,11 @@
 import { useContext, useEffect, useState } from "react";
-import logo from "../../assets/logo.svg";
+
 import { SignupPageStyled } from "./SignupPageStyled";
 import { GlobalContext } from "../../contexts/GlobalContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { BASE_URL } from "../../constants/url";
+import Navbar from "../../components/Navbar/Navbar";
 
 export default function SignupPage() {
   const context = useContext(GlobalContext);
@@ -56,12 +57,7 @@ export default function SignupPage() {
   return (
     <>
       <SignupPageStyled>
-        <section>
-          <div>
-            <img src={logo} alt="" />
-            <a className="login">Entrar</a>
-          </div>
-        </section>
+        <Navbar/>
         <section>
           <h1>Olá, boas vindas ao LabEddit ;)</h1>
         </section>

@@ -1,9 +1,11 @@
 import Post from "../../components/Post/Post";
 import { PostsPageStyled } from "./PostsPageStyled";
+import Navbar from "../../components/Navbar/Navbar";
 
 export default function PostsPage() {
   return (
     <>
+      <Navbar />
       <PostsPageStyled>
         <section className="container-input">
           <div className="input">
