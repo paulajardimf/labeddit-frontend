@@ -5,7 +5,7 @@ import { LoginPageStyled } from "./LoginPageStyled";
 import { BASE_URL } from "../../constants/url";
 import { GlobalContext } from "../../contexts/GlobalContext";
 import { useNavigate } from "react-router-dom";
-import { goToSignupPage } from "../../routes/coordinator";
+import { goToPostsPage, goToSignupPage } from "../../routes/coordinator";
 
 export default function LoginPage() {
   const context = useContext(GlobalContext);
@@ -39,7 +39,7 @@ export default function LoginPage() {
       setIsLoading(false);
       context.context.setIsAuth(true);
 
-      // goToHomePage(navigate);
+      goToPostsPage(navigate);
     } catch (error) {
       console.log(error);
       setIsLoading(false);
