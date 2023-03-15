@@ -5,6 +5,7 @@ import { BASE_URL } from '../constants/url';
 export default function GlobalState() {
   const [posts, setPosts] = useState([]);
   const [isAuth, setIsAuth] = useState(false);
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     const token = window.localStorage.getItem("cookenu-token")
@@ -35,10 +36,32 @@ export default function GlobalState() {
     }
   };
 
+  const fetchComments = async (postId) => {
+    try {
+      const config = {
+        headers: {
+          Authorization: window.localStorage.getItem("labeddit-token"),
+        },
+      };
+      const response = await axios.get(
+        `${BASE_URL}/posts/comment/${postId}`,
+        config
+      );
+      setComments(response.data);
+      
+    } catch (error) {
+      console.log(error?.response?.data);
+      // window.alert(error?.response?.data?.message);
+    }
+  };
+
   return {
     context,
     fetchPosts,
     posts,
-    setPosts
+    setPosts,
+    fetchComments,
+    comments,
+    setComments
   }
 }
