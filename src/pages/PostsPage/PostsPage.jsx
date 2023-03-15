@@ -9,14 +9,14 @@ import { BASE_URL } from "../../constants/url";
 import { goToLoginPage } from "../../routes/coordinator";
 
 export default function PostsPage() {
-  const context = useContext(GlobalContext);
+  const {context, posts, setPosts, fetchPosts} = useContext(GlobalContext);
   const params = useParams();
-  const [posts, setPosts] = useState([]);
+
   const [content, setContent] = useState("");
   const navigate = useNavigate();
 
   // useEffect(() => {
-  //   if (!context.isAuth) {
+  //   if (!context.context.isAuth) {
   //     goToLoginPage(navigate)
   //   }
   // }, [])
@@ -25,20 +25,7 @@ export default function PostsPage() {
     fetchPosts();
   }, []);
 
-  const fetchPosts = async () => {
-    try {
-      const config = {
-        headers: {
-          Authorization: window.localStorage.getItem("labeddit-token"),
-        },
-      };
-      const response = await axios.get(`${BASE_URL}/posts`, config);
-      setPosts(response.data);
-    } catch (error) {
-      console.log(error?.response?.data);
-      window.alert(error?.response?.data?.message);
-    }
-  };
+
 
   const createPost = async () => {
     try {
