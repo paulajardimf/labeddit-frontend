@@ -10,10 +10,16 @@ import { PostsPageStyled } from "../PostsPage/PostsPageStyled";
 
 
 export default function CommentsPage() {
-  const { fetchPosts, posts, fetchComments, comments, setComments } = useContext(GlobalContext);
+  const { context, fetchPosts, posts, fetchComments, comments, setComments } = useContext(GlobalContext);
 
   const [content, setContent] = useState("");
   const params = useParams();
+
+  useEffect(() => {
+    if (!context.isAuth) {
+      goToLoginPage(navigate)
+    }
+  }, [])
 
   useEffect(() => {
     fetchPosts()

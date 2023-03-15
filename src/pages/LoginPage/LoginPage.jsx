@@ -8,11 +8,9 @@ import { useNavigate } from "react-router-dom";
 import { goToPostsPage, goToSignupPage } from "../../routes/coordinator";
 
 export default function LoginPage() {
-  const context = useContext(GlobalContext);
+  const { context, page, setPage } = useContext(GlobalContext);
 
   const navigate = useNavigate();
-
-  const [isLoading, setIsLoading] = useState(false);
 
   const [form, setForm] = useState({
     email: "",
@@ -25,8 +23,6 @@ export default function LoginPage() {
 
   const login = async () => {
     try {
-      setIsLoading(true);
-
       const body = {
         email: form.email,
         password: form.password,
@@ -35,14 +31,13 @@ export default function LoginPage() {
       const response = await axios.post(`${BASE_URL}/user/login`, body);
 
       window.localStorage.setItem("labeddit-token", response.data.token);
+      const token = window.localStorage.getItem("labeddit-token");
 
-      setIsLoading(false);
-      context.context.setIsAuth(true);
+      context.setIsAuth(true);
 
-      goToPostsPage(navigate);
+      goToPostsPage(navigate, token);
     } catch (error) {
       console.log(error);
-      setIsLoading(false);
     }
   };
 
@@ -55,13 +50,36 @@ export default function LoginPage() {
           <h5>O projeto de rede social da Labenu</h5>
         </section>
         <section>
-          <input type="email" value={form.email} onChange={onChangeForm} name="email" placeholder="E-mail" autoComplete="off"/>
-          <input type="password" value={form.password} onChange={onChangeForm} name="password" placeholder="Senha" autoComplete="off"/>
+          <input
+            type="email"
+            value={form.email}
+            onChange={onChangeForm}
+            name="email"
+            placeholder="E-mail"
+            autoComplete="off"
+          />
+          <input
+            type="password"
+            value={form.password}
+            onChange={onChangeForm}
+            name="password"
+            placeholder="Senha"
+            autoComplete="off"
+          />
         </section>
         <section>
-          <button className="button-color" onClick={login}>Continuar</button>
+          <button className="button-color" onClick={login}>
+            Continuar
+          </button>
           <hr />
-          <button onClick={() => goToSignupPage(navigate)}>Crie uma conta!</button>
+          <button
+            onClick={() => {
+              goToSignupPage(navigate);
+              setPage("signupPage");
+            }}
+          >
+            Crie uma conta!
+          </button>
         </section>
       </LoginPageStyled>
     </>

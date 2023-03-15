@@ -15,11 +15,11 @@ export default function PostsPage() {
   const [content, setContent] = useState("");
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   if (!context.context.isAuth) {
-  //     goToLoginPage(navigate)
-  //   }
-  // }, [])
+  useEffect(() => {
+    if (!context.isAuth) {
+      goToLoginPage(navigate)
+    }
+  }, [])
 
   useEffect(() => {
     fetchPosts();

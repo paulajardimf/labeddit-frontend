@@ -28,4 +28,9 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 0.875rem;
     font-weight: 300;
   }
+
+  a {
+    color: #4088CB;
+    font-weight: 500;
+  }
 `;

@@ -6,6 +6,7 @@ export default function GlobalState() {
   const [posts, setPosts] = useState([]);
   const [isAuth, setIsAuth] = useState(false);
   const [comments, setComments] = useState([]);
+  const [page, setPage] = useState("")
 
   useEffect(() => {
     const token = window.localStorage.getItem("cookenu-token")
@@ -62,6 +63,8 @@ export default function GlobalState() {
     setPosts,
     fetchComments,
     comments,
-    setComments
+    setComments,
+    page,
+    setPage
   }
 }

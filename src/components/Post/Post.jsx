@@ -10,7 +10,7 @@ import { goToCommentsPage } from "../../routes/coordinator";
 import { useNavigate } from "react-router-dom";
 
 export default function Post({ post }) {
-  const { context, posts, setPosts, fetchPosts } = useContext(GlobalContext);
+  const { context, posts, setPosts, fetchPosts, page, setPage } = useContext(GlobalContext);
   const [comment, setComment] = useState([]);
 
   const navigate = useNavigate();
@@ -87,7 +87,10 @@ export default function Post({ post }) {
             />
             <h6>{post.dislikes}</h6>
           </div>
-          <div onClick={()=> goToCommentsPage(navigate, post.id)}>
+          <div onClick={()=> {
+            goToCommentsPage(navigate, post.id)
+            setPage("commentPage")
+          }}>
             <img src={commentIcon} alt="" />
             <h6>{comment.length}</h6>
           </div>
