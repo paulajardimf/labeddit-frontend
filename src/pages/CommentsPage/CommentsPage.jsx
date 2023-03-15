@@ -74,7 +74,7 @@ export default function CommentsPage() {
             />
           </div>
           <button type="submit" onClick={() => createComment(params.id)}>
-            Postar
+            Responder
           </button>
         </section>
         <hr />

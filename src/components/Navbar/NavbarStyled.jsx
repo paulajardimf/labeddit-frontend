@@ -14,14 +14,19 @@ export const NavbarStyled = styled.header`
     top: 0;
     align-items: center;
     justify-content: flex-end;
-    padding-right: 40px;
+    padding-right: 20px;
   }
 
   img {
     width: 28px;
-    position: fixed;
+    position: absolute;
     left: 50%;
     transform: translateX(-50%);
+  }
+
+  .close {
+    position: fixed;
+    left: 40px;
   }
 
 `;

@@ -73,7 +73,7 @@ export default function Post({ post }) {
     <>
       <PostStyled>
         <section className="container-post">
-          <h6>Enviado por: {post.creator.name}</h6>
+          <h6>Enviado por: {post?.creator?.name}</h6>
           <p>{post.content}</p>
         </section>
         <section className="container-icons">
