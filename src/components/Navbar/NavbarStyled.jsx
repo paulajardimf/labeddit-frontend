@@ -13,17 +13,14 @@ export const NavbarStyled = styled.header`
     position: absolute;
     top: 0;
     align-items: center;
+    justify-content: flex-end;
   }
 
   img {
     width: 28px;
-    position: relative;
+    position: fixed;
     left: 50%;
     transform: translateX(-50%);
   }
 
-  a {
-    color: #4088CB;
-    font-weight: 500;
-  }
 `;

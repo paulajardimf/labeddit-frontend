@@ -12,8 +12,6 @@ export default function SignupPage() {
 
   const navigate = useNavigate();
 
-  const [isLoading, setIsLoading] = useState(false);
-
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -24,7 +22,7 @@ export default function SignupPage() {
     if (context.context.isAuth) {
       goToPostsPage(navigate);
     }
-  }, [context.isAuth, navigate]);
+  }, []);
 
   const onChangeForm = (event) => {
     setForm({ ...form, [event.target.name]: event.target.value });
