@@ -14,6 +14,7 @@ export const NavbarStyled = styled.header`
     top: 0;
     align-items: center;
     justify-content: flex-end;
+    padding-right: 40px;
   }
 
   img {

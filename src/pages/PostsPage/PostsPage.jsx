@@ -16,16 +16,18 @@ export default function PostsPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!context.isAuth) {
-      goToLoginPage(navigate)
+    const token = window.localStorage.getItem("labeddit-token");
+    if (token) {
+      context.setIsAuth(true);
+    } else {
+      goToLoginPage(navigate);
     }
-  }, [])
+  }, [context]);
+
 
   useEffect(() => {
     fetchPosts();
   }, []);
-
-
 
   const createPost = async () => {
     try {
