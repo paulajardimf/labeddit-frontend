@@ -3,11 +3,16 @@ import styled from "styled-components";
 export const PostsPageStyled = styled.div`
   padding: 0 25px;
   margin-top: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   .container-input {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    align-items: center;
     
     .input {
       background-color: #e0e0e0;
@@ -21,6 +26,9 @@ export const PostsPageStyled = styled.div`
         background-color: #e0e0e0;
         border: none;
         font-size: 1.125rem;
+      }
+      input:focus {
+        outline: none;
       }
     }
     button {
@@ -53,6 +61,8 @@ export const PostsPageStyled = styled.div`
   .container-posts {
     display:flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 10px;
     width: 22.438rem;
   }

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
 import Post from "../../components/Post/Post";
 import Comment from "../../components/Post/Comment";
@@ -13,13 +13,17 @@ export default function CommentsPage() {
   const { context, fetchPosts, posts, fetchComments, comments, setComments } = useContext(GlobalContext);
 
   const [content, setContent] = useState("");
+  const navigate = useNavigate();
   const params = useParams();
 
   useEffect(() => {
-    if (!context.isAuth) {
-      goToLoginPage(navigate)
+    const token = window.localStorage.getItem("labeddit-token");
+    if (token) {
+      context.setIsAuth(true);
+    } else {
+      goToLoginPage(navigate);
     }
-  }, [])
+  }, [context]);
 
   useEffect(() => {
     fetchPosts()
