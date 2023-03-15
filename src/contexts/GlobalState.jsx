@@ -1,6 +1,9 @@
+import axios from 'axios';
 import { useEffect, useState } from 'react'
+import { BASE_URL } from '../constants/url';
 
 export default function GlobalState() {
+  const [posts, setPosts] = useState([]);
   const [isAuth, setIsAuth] = useState(false);
 
   useEffect(() => {
@@ -17,7 +20,25 @@ export default function GlobalState() {
     setIsAuth: setIsAuth
   };
 
+  const fetchPosts = async () => {
+    try {
+      const config = {
+        headers: {
+          Authorization: window.localStorage.getItem("labeddit-token"),
+        },
+      };
+      const response = await axios.get(`${BASE_URL}/posts`, config);
+      setPosts(response.data);
+    } catch (error) {
+      console.log(error?.response?.data);
+      window.alert(error?.response?.data?.message);
+    }
+  };
+
   return {
-    context
+    context,
+    fetchPosts,
+    posts,
+    setPosts
   }
 }
