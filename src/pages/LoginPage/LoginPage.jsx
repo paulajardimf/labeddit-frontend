@@ -1,11 +1,15 @@
 import axios from "axios";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import logo from "../../assets/logo.svg";
 import { LoginPageStyled } from "./LoginPageStyled";
 import { BASE_URL } from "../../constants/url";
 import { GlobalContext } from "../../contexts/GlobalContext";
 import { useNavigate } from "react-router-dom";
-import { goToPostsPage, goToSignupPage } from "../../routes/coordinator";
+import {
+  goToLoginPage,
+  goToPostsPage,
+  goToSignupPage,
+} from "../../routes/coordinator";
 
 export default function LoginPage() {
   const { context, page, setPage } = useContext(GlobalContext);
@@ -21,6 +25,13 @@ export default function LoginPage() {
     setForm({ ...form, [event.target.name]: event.target.value });
   };
 
+  useEffect(() => {
+    const token = window.localStorage.getItem("labeddit-token");
+    if (token) {
+      goToPostsPage(navigate);
+    }
+  }, []);
+
   const login = async () => {
     try {
       const body = {
@@ -33,11 +44,18 @@ export default function LoginPage() {
       window.localStorage.setItem("labeddit-token", response.data.token);
       const token = window.localStorage.getItem("labeddit-token");
 
+      if (response.data.token === undefined) {
+        window.localStorage.removeItem("labeddit-token");
+        goToHomePage(navigate);
+      }
+
       context.setIsAuth(true);
 
       goToPostsPage(navigate, token);
     } catch (error) {
-      console.log(error);
+      console.log(error?.response?.data);
+      alert(error?.response?.data);
+      window.localStorage.removeItem("labeddit-token");
     }
   };
 

@@ -28,7 +28,8 @@ export default function Comment({comment}) {
       });
       fetchComments(params.id);
     } catch (error) {
-      console.log(error);
+      console.log(error?.response?.data);
+      alert(error?.response?.data);
     }
   };
 
@@ -44,7 +45,8 @@ export default function Comment({comment}) {
       });
       fetchComments(params.id);
     } catch (error) {
-      console.log(error);
+      console.log(error?.response?.data);
+      alert(error?.response?.data);
     }
   };
 

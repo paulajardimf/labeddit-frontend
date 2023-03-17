@@ -48,7 +48,7 @@ export default function PostsPage() {
       fetchPosts();
     } catch (error) {
       console.log(error?.response?.data);
-      window.alert(error?.response?.data?.message);
+      window.alert(error?.response?.data);
     }
   };
 

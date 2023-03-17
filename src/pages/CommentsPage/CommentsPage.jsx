@@ -55,7 +55,7 @@ export default function CommentsPage() {
       setContent("");
     } catch (error) {
       console.log(error?.response?.data);
-      window.alert(error?.response?.data?.message);
+      window.alert(error?.response?.data);
     }
   };
 
