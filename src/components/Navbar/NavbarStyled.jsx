@@ -7,7 +7,7 @@ export const NavbarStyled = styled.header`
 
   div {
     background-color: #ededed;
-    width: 100vw;
+    width: 100%;
     height: 50px;
     display: flex;
     position: absolute;
@@ -25,7 +25,7 @@ export const NavbarStyled = styled.header`
   }
 
   .close {
-    position: fixed;
+    position: absolute;
     left: 40px;
   }
 

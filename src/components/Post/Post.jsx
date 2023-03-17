@@ -27,7 +27,8 @@ export default function Post({ post }) {
       });
       fetchPosts();
     } catch (error) {
-      console.log(error);
+      console.log(error?.response?.data);
+      alert(error?.response?.data);
     }
   };
 
@@ -43,7 +44,8 @@ export default function Post({ post }) {
       });
       fetchPosts();
     } catch (error) {
-      console.log(error);
+      console.log(error?.response?.data);
+      alert(error?.response?.data);
     }
   };
 
@@ -61,7 +63,7 @@ export default function Post({ post }) {
       setComment(response.data);
     } catch (error) {
       console.log(error?.response?.data);
-      // window.alert(error?.response?.data?.message);
+      alert(error?.response?.data);
     }
   };
 

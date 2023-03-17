@@ -47,7 +47,8 @@ export default function SignupPage() {
 
       goToPostsPage(navigate);
     } catch (error) {
-      console.log(error);
+      console.log(error?.response?.data);
+      alert(error?.response?.data);
       setIsLoading(false);
     }
   };
