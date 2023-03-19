@@ -10,7 +10,7 @@ export const NavbarStyled = styled.header`
     width: 100%;
     height: 50px;
     display: flex;
-    position: absolute;
+    position: relative;
     top: 0;
     align-items: center;
     justify-content: flex-end;

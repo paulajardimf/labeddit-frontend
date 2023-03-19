@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { BASE_URL } from "../../constants/url";
 import Navbar from "../../components/Navbar/Navbar";
+import Footer from "../../components/Footer/Footer";
 
 export default function SignupPage() {
   const context = useContext(GlobalContext);
@@ -51,8 +52,8 @@ export default function SignupPage() {
 
   return (
     <>
+      <Navbar />
       <SignupPageStyled>
-        <Navbar />
         <section>
           <h1>Olá, boas vindas ao LabEddit ;)</h1>
         </section>
@@ -99,6 +100,7 @@ export default function SignupPage() {
           </button>
         </section>
       </SignupPageStyled>
+      <Footer/>
     </>
   );
 }

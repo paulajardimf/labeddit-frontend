@@ -9,7 +9,7 @@ export const FooterStyled = styled.header`
   align-items: center;
   justify-content: space-between;
   background-color: #ededed;
-  width: 100%;
+  width: 428px;
   height: 50px;
 
   h4 {

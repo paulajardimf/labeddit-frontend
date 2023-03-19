@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const PostsPageStyled = styled.div`
   padding: 0 25px;
-  margin-top: 70px;
+  margin-top: 35px;
   display: flex;
   min-height: 87vh;
   flex-direction: column;
