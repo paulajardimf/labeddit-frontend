@@ -3,7 +3,7 @@ import { PostsPageStyled } from "./PostsPageStyled";
 import Navbar from "../../components/Navbar/Navbar";
 import { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../../contexts/GlobalContext";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { BASE_URL } from "../../constants/url";
 import { goToLoginPage } from "../../routes/coordinator";
@@ -12,6 +12,8 @@ export default function PostsPage() {
   const {context, posts, setPosts, fetchPosts} = useContext(GlobalContext);
 
   const [content, setContent] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -30,6 +32,8 @@ export default function PostsPage() {
 
   const createPost = async () => {
     try {
+      setIsLoading(true);
+
       const body = {
         content: content,
       };
@@ -48,6 +52,8 @@ export default function PostsPage() {
     } catch (error) {
       console.log(error?.response?.data);
       window.alert(error?.response?.data);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -64,13 +70,13 @@ export default function PostsPage() {
               onChange={(e) => setContent(e.target.value)}
             />
           </div>
-          <button type="submit" onClick={createPost}>
-            Postar
+          <button type="submit" onClick={createPost} disabled={isLoading}>
+            {isLoading ? <div className="loading"></div> : "Postar"}
           </button>
         </section>
         <hr />
         <section className="container-posts">
-          {posts
+          {Array.isArray(posts) && posts
             .map((post) => {
               return <Post key={post.id} post={post} />;
             })

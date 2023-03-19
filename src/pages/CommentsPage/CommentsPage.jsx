@@ -12,6 +12,8 @@ export default function CommentsPage() {
   const { context, fetchPosts, posts, fetchComments, comments, setComments } = useContext(GlobalContext);
 
   const [content, setContent] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
   const navigate = useNavigate();
   const params = useParams();
 
@@ -36,6 +38,8 @@ export default function CommentsPage() {
 
   const createComment = async (postId) => {
     try {
+      setIsLoading(true);
+
       const body = {
         content: content,
       };
@@ -55,6 +59,8 @@ export default function CommentsPage() {
     } catch (error) {
       console.log(error?.response?.data);
       window.alert(error?.response?.data);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -72,8 +78,8 @@ export default function CommentsPage() {
               onChange={(e) => setContent(e.target.value)}
             />
           </div>
-          <button type="submit" onClick={() => createComment(params.id)}>
-            Responder
+          <button type="submit" onClick={() => createComment(params.id)} disabled={isLoading}>
+          {isLoading ? <div className="loading"></div> : "Responder"}
           </button>
         </section>
         <hr />

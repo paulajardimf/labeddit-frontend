@@ -13,6 +13,7 @@ import {
 
 export default function LoginPage() {
   const { context, setPage } = useContext(GlobalContext);
+  const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -34,6 +35,8 @@ export default function LoginPage() {
 
   const login = async () => {
     try {
+      setIsLoading(true);
+
       const body = {
         email: form.email,
         password: form.password,
@@ -56,6 +59,8 @@ export default function LoginPage() {
       console.log(error?.response?.data);
       alert(error?.response?.data);
       window.localStorage.removeItem("labeddit-token");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -86,8 +91,8 @@ export default function LoginPage() {
           />
         </section>
         <section>
-          <button className="button-color" onClick={login}>
-            Continuar
+          <button className="button-color" onClick={login} disabled={isLoading}>
+          {isLoading ? <div className="loading"></div> : "Continuar"}
           </button>
           <hr />
           <button
