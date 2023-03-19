@@ -10,7 +10,7 @@ import { goToCommentsPage } from "../../routes/coordinator";
 import { useNavigate } from "react-router-dom";
 
 export default function Post({ post }) {
-  const { context, posts, setPosts, fetchPosts, page, setPage } = useContext(GlobalContext);
+  const { fetchPosts, setPage } = useContext(GlobalContext);
   const [comment, setComment] = useState([]);
 
   const navigate = useNavigate();

@@ -30,8 +30,6 @@ export default function SignupPage() {
 
   const signup = async () => {
     try {
-      setIsLoading(true);
-
       const body = {
         name: form.name,
         email: form.email,
@@ -40,16 +38,14 @@ export default function SignupPage() {
 
       const response = await axios.post(`${BASE_URL}/user/signup`, body);
 
-      window.localStorage.setItem("cookenu-token", response.data.token);
+      window.localStorage.setItem("labeddit-token", response.data.token);
 
-      setIsLoading(false);
       context.context.setIsAuth(true);
 
       goToPostsPage(navigate);
     } catch (error) {
       console.log(error?.response?.data);
       alert(error?.response?.data);
-      setIsLoading(false);
     }
   };
 

@@ -10,7 +10,6 @@ import { goToLoginPage } from "../../routes/coordinator";
 
 export default function PostsPage() {
   const {context, posts, setPosts, fetchPosts} = useContext(GlobalContext);
-  const params = useParams();
 
   const [content, setContent] = useState("");
   const navigate = useNavigate();

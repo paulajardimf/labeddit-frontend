@@ -5,7 +5,6 @@ import { GlobalContext } from "../../contexts/GlobalContext";
 import { NavbarStyled } from "./NavbarStyled";
 import { useNavigate } from "react-router-dom";
 import {
-  goToCommentsPage,
   goToLoginPage,
   goToPostsPage,
 } from "../../routes/coordinator";

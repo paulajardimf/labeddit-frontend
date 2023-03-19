@@ -1,20 +1,16 @@
 import arrowUp from "../../assets/arrow-up.svg";
 import arrowDown from "../../assets/arrow-down.svg";
-import commentIcon from "../../assets/comment-icon.svg";
 import { PostStyled } from "./PostStyled";
 import axios from "axios";
 import { BASE_URL } from "../../constants/url";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { GlobalContext } from "../../contexts/GlobalContext";
-import { goToCommentsPage } from "../../routes/coordinator";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 export default function Comment({comment}) {
-  const { context, posts, setPosts, fetchPosts, fetchComments, comments, setComments, page, setPage } = useContext(GlobalContext);
+  const { fetchComments } = useContext(GlobalContext);
 
   const params = useParams();
-
-  const navigate = useNavigate();
 
   const likeComment = async (commentId) => {
     try {

@@ -8,7 +8,6 @@ import { BASE_URL } from "../../constants/url";
 import { GlobalContext } from "../../contexts/GlobalContext";
 import { PostsPageStyled } from "../PostsPage/PostsPageStyled";
 
-
 export default function CommentsPage() {
   const { context, fetchPosts, posts, fetchComments, comments, setComments } = useContext(GlobalContext);
 

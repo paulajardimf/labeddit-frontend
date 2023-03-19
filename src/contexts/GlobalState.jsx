@@ -9,12 +9,11 @@ export default function GlobalState() {
   const [page, setPage] = useState("")
 
   useEffect(() => {
-    const token = window.localStorage.getItem("cookenu-token")
+    const token = window.localStorage.getItem("labeddit-token")
 
     if(token) {
       setIsAuth(true)
     }
-
   })
 
   const context = {
@@ -52,7 +51,6 @@ export default function GlobalState() {
       
     } catch (error) {
       console.log(error?.response?.data);
-      // window.alert(error?.response?.data?.message);
     }
   };
 
