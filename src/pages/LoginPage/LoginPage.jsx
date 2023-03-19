@@ -6,13 +6,13 @@ import { BASE_URL } from "../../constants/url";
 import { GlobalContext } from "../../contexts/GlobalContext";
 import { useNavigate } from "react-router-dom";
 import {
-  goToLoginPage,
+  goToHomePage,
   goToPostsPage,
   goToSignupPage,
 } from "../../routes/coordinator";
 
 export default function LoginPage() {
-  const { context, page, setPage } = useContext(GlobalContext);
+  const { context, setPage } = useContext(GlobalContext);
 
   const navigate = useNavigate();
 
