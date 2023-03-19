@@ -44,6 +44,10 @@ export const PostsPageStyled = styled.div`
       color: #fff;
       border: none;
     }
+    button:active {
+    background-color: #fff;
+    color: #fe7e02;
+  }
   }
 
   hr {
