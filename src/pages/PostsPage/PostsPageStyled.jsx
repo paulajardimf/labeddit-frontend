@@ -4,9 +4,10 @@ export const PostsPageStyled = styled.div`
   padding: 0 25px;
   margin-top: 70px;
   display: flex;
+  min-height: 87vh;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  padding-bottom: 30px;
 
   .container-input {
     display: flex;
