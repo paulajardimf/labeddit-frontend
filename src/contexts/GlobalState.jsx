@@ -6,7 +6,7 @@ export default function GlobalState() {
   const [posts, setPosts] = useState([]);
   const [isAuth, setIsAuth] = useState(false);
   const [comments, setComments] = useState([]);
-  const [page, setPage] = useState("")
+  const [page, setPage] = useState("");
 
   useEffect(() => {
     const token = window.localStorage.getItem("labeddit-token")
@@ -48,7 +48,6 @@ export default function GlobalState() {
         config
       );
       setComments(response.data);
-      
     } catch (error) {
       console.log(error?.response?.data);
     }
