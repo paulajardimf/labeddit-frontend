@@ -74,5 +74,8 @@ export const SignupPageStyled = styled.main`
     border: none;
   }
 
-
+  .button-color:active {
+    background-color: #fff;
+    color: #fe7e02;
+  }
 `
