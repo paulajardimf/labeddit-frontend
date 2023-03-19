@@ -10,6 +10,7 @@ import {
   goToPostsPage,
   goToSignupPage,
 } from "../../routes/coordinator";
+import Footer from "../../components/Footer/Footer";
 
 export default function LoginPage() {
   const { context, setPage } = useContext(GlobalContext);
@@ -104,6 +105,7 @@ export default function LoginPage() {
             Crie uma conta!
           </button>
         </section>
+        <Footer />
       </LoginPageStyled>
     </>
   );

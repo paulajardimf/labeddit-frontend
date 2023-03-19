@@ -7,12 +7,14 @@ import Comment from "../../components/Post/Comment";
 import { BASE_URL } from "../../constants/url";
 import { GlobalContext } from "../../contexts/GlobalContext";
 import { PostsPageStyled } from "../PostsPage/PostsPageStyled";
+import Footer from "../../components/Footer/Footer";
 
 export default function CommentsPage() {
   const { context, fetchPosts, posts, fetchComments, comments, setComments } = useContext(GlobalContext);
 
   const [content, setContent] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [page, setPage] = useState("CommentsPage");
 
   const navigate = useNavigate();
   const params = useParams();
@@ -90,6 +92,7 @@ export default function CommentsPage() {
             })}
         </section>
       </PostsPageStyled>
+      <Footer page={page} />
     </>
   )
 }

@@ -7,12 +7,14 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { BASE_URL } from "../../constants/url";
 import { goToLoginPage } from "../../routes/coordinator";
+import Footer from "../../components/Footer/Footer";
 
 export default function PostsPage() {
   const {context, posts, setPosts, fetchPosts} = useContext(GlobalContext);
 
   const [content, setContent] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [page, setPage] = useState("PostsPage");
 
   const navigate = useNavigate();
 
@@ -83,6 +85,7 @@ export default function PostsPage() {
             .reverse()}
         </section>
       </PostsPageStyled>
+      <Footer page={page}/>
     </>
   );
 }
