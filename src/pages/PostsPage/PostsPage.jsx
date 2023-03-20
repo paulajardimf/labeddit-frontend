@@ -51,6 +51,7 @@ export default function PostsPage() {
       );
       setPosts(response.data);
       fetchPosts();
+      setContent("");
     } catch (error) {
       console.log(error?.response?.data);
       window.alert(error?.response?.data);
